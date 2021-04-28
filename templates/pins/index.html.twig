@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Pinterest</title>
+</head>
+<body>
+    <h1>Pins</h1>
+
+    <a href="{{ path('app_pins_create') }}">Creer un pin</a>
+
+    {% if pins|length > 0 %}
+        {% for pin in pins %}
+            <article>
+                <h1><a href="{{ path('app_pins_show', {'id' : pin.id}) }} ">{{ pin.Title() }}</a></h1>
+                <p>{{ pin.Description() }}</p>
+            </article>
+        {% endfor %}
+
+    {% else %}
+            <p>Sorry, no pins yet !</p>
+
+    {% endif %}
+</body>
+</html>
